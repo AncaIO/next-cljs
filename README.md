@@ -20,21 +20,22 @@ The Next.js-compatible page files are stored as follows:
 
 The generated Next.js application supports the following:
 
--[x] [Custom _app definition](https://nextjs.org/docs/advanced-features/custom-app)
--[x] _app global style import support from aliased path
--[x] Support for [per-page layout definition](https://nextjs.org/docs/basic-features/layouts#per-page-layouts) or no layout
--[x] Support for simple [dynamic routes](https://nextjs.org/docs/routing/dynamic-routes)
--[x] Support for [server-side rendering](https://nextjs.org/docs/basic-features/data-fetching/get-server-side-props)
--[x] Support for [static generation](https://nextjs.org/docs/basic-features/data-fetching/get-static-props) of simple pages and dynamic routes
--[x] Next/Link & Next.js router
--[ ] CLJS components (not tested)
--[ ] Next/Image (not tested)
--[ ] Next.js middleware (not attempted)
--[ ] API routes (not attempted)
--[ ] Localized routes (not attempted)
--[ ] Localization libraries (not attempted)
--[ ] Client-side rendering with SWR, React hooks (not attempted)
--[ ] Re-frame
+- [x] [Custom _app definition](https://nextjs.org/docs/advanced-features/custom-app)
+
+- [x] _app global style import support from aliased path
+- [x] Support for [per-page layout definition](https://nextjs.org/docs/basic-features/layouts#per-page-layouts) or no layout
+- [x] Support for simple [dynamic routes](https://nextjs.org/docs/routing/dynamic-routes)
+- [x] Support for [server-side rendering](https://nextjs.org/docs/basic-features/data-fetching/get-server-side-props)
+- [x] Support for [static generation](https://nextjs.org/docs/basic-features/data-fetching/get-static-props) of simple pages and dynamic routes
+- [x] Next/Link & Next.js router
+- [ ] CLJS components (not tested)
+- [ ] Next/Image (not tested)
+- [ ] Next.js middleware (not attempted)
+- [ ] API routes (not attempted)
+- [ ] Localized routes (not attempted)
+- [ ] Localization libraries (not attempted)
+- [ ] Client-side rendering with SWR, React hooks (not attempted)
+- [ ] Re-frame
 
 
 ## Start the app for development
