@@ -5,7 +5,6 @@
    [clojure.string :as str]))
 
 (defn all-vars [state]
-  (print state)
   (for [[ns ns-info] (get-in state [:compiler-env :cljs.analyzer/namespaces])
         ns-def (-> ns-info :defs vals)]
     ns-def))
@@ -29,14 +28,21 @@
           content
           (str
            (when style
-             (str  "import \"" style "\""))
-           "\nexport {" page-var " as default} from \"@/cljs/" page-ns ".js\""
+             (str  "import \"" style "\"\n"))
+           "import {" page-var "} from \"shadow-cljs/" page-ns "\"\n"
+           "export default " page-var "\n"
            (when (= "dynamic" route-type)
-             (str "\nexport const getStaticPaths = () => " page-ns ".get_static_paths()"))
+             (str
+              "import {get_static_paths} from \"shadow-cljs/" page-ns "\"\n"
+              "\nexport const getStaticPaths = () => get_static_paths()\n"))
            (when (= "static" rendering-type)
-             (str "\nexport const getStaticProps = (ctx) => " page-ns ".get_static_props(ctx)"))
+             (str
+              "import {get_static_props} from \"shadow-cljs/" page-ns "\"\n"
+              "\nexport const getStaticProps = (ctx) => get_static_props(ctx) \n"))
            (when (= "server" rendering-type)
-             (str "\nexport const getServerSideProps = (ctx) => " page-ns ".get_serverside_props(ctx)")))
+             (str
+              "import {get_serverside_props} from \"shadow-cljs/" page-ns "\"\n"
+              "\nexport const getServerSideProps = (ctx) => get_serverside_props(ctx)\n")))
 
           out-dir
           (io/file "site" "pages")

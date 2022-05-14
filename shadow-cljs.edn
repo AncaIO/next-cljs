@@ -1,14 +1,20 @@
 ;; shadow-cljs configuration
 {:source-paths
- ["src/dev"
-  "src/main"
+ ["src/main"
   "src/test"]
 
  :dependencies
- [[reagent "0.8.1"]]
+ [[reagent "1.1.1"]]
 
  :builds
  {:site {:target :npm-module
-         :output-dir "site/cljs"
+         :output-dir "site/node_modules/shadow-cljs"
          :build-hooks [(shadow.next-js/create-pages)]
-         :ns-regexp "pages/.*cljs$"}}}
+         :entries [index]
+         :compiler-options {:optimizations :advanced
+                            :fn-invoke-direct true
+                            :source-map-detail-level :all
+                            :pretty-print true
+                            :output-feature-set :es-next
+                            :infer-externs true
+                            :pseudo-names true}}}}
