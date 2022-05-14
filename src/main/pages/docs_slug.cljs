@@ -4,16 +4,20 @@
    ["next/link" :default Link]))
 
 (defn page-docs-slug
-  {:next/rendering-type "static" ;; nil, "static" or "server"
+  {:export true
+   :next/rendering-type "static" ;; nil, "static" or "server"
    :next/route-type "dynamic" ;; skip or "dynamic"
    :next/page "docs/[slug]"}
   [props]
   (let [cljs-props (js->clj props :keywordize-keys true)]
     (r/as-element
-     [:h1 "Single doc page " (get-in cljs-props [:params :slug])])))
+     [:div [:h1 "Single doc page " (get-in cljs-props [:params :slug])]
+      [:div
+       [:p "Lorem ipsum"]
+       [:> Link {:href "/" :passhref true} [:a "back to index"]]]])))
 
 (defn get-static-paths
-  "Use for statically generating Next.js pages. Requires `:next/type static`"
+  "Use for statically generating Next.js pages. Requires `:next/rendering-type static` and `:next/route-type dynamic`"
   {:export true
   ;;  :async true
    }
@@ -22,7 +26,7 @@
     paths))
 
 (defn get-static-props
-  "Use for statically generating Next.js pages. Requires `:next/type static`"
+  "Use for statically generating Next.js pages. Requires `:next/rendering-type static`"
   {:export true
   ;;  :async true
    }
