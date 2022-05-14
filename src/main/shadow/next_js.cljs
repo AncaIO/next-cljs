@@ -10,6 +10,9 @@
 ;;   )
 ;; }
 
-(defn page-get-layout [page-fn query-fn]
-  (gobj/set page-fn "getLayout" (fn [req]
-                                  (query-fn req))))
+(defn page-get-layout
+  {:export true}
+  [page-fn query-fn]
+  (goog.object/set
+   page-fn "getLayout" (fn [layout]
+                         (query-fn layout))))
